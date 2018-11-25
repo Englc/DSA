@@ -51,8 +51,8 @@ var eigenschaftView = {
         result += "</h5>";
         result += "  <div class=\"card-body\">";
         result += "    <h5 id=\"value" + eigenschaft.name + "\" class=\"card-title\">" + eigenschaft.value + "</h5>";
-        result += "    <div><button id=\"up" + eigenschaft.name + "\" class=\"btn btn-primary btn-sm up\">up</button>";
-        result += "<button id=\"down" + eigenschaft.name + "\" class=\"btn btn-primary btn-sm down\">down</button>";
+        result += "    <div><button id=\"up" + eigenschaft.name + "\" class=\"btn btn-primary btn-sm up\">&#8593;</button>";
+        result += "<button id=\"down" + eigenschaft.name + "\" class=\"btn btn-primary btn-sm down\">&#8595;</button>";
         result += this._displayDialog(eigenschaft) + "</div>";
         result += "  </div>";
         result += "</div>";
