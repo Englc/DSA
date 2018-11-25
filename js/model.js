@@ -806,5 +806,33 @@ var talente =
             Patzer: "Eine Fehleinschätzung bei einem Horoskop, einer Mondfinsternis etc.",
             Steigerungskosten: "A"
         },
-    ]
+    ], 
+    init: function() {
+        for(var talentGruppe in talente) {
+            for(var talentIndex in talente[talentGruppe]) { 
+                talente[talentGruppe][talentIndex].id = talente[talentGruppe][talentIndex].name.replace(/\s/g, "").replace(/[^\w\s]/gi, "");
+                talente[talentGruppe][talentIndex].value = -1; 
+            }
+        }
+    },
+    iterateAllTalente: function(func) {
+        for(var talentGruppe in talente) {
+            for(var talentIndex in talente[talentGruppe]) { 
+                func(talente[talentGruppe][talentIndex]);
+            }
+        }
+    },
+    getTalent: function(searchId){
+        var resultTalent;
+        resultTalent = talente.Gesellschaftstalente.find(function(element){return element.id == searchId;});
+        if(resultTalent){return resultTalent;}
+        resultTalent = talente.Handwerkstalente.find(function(element){return element.id == searchId;});
+        if(resultTalent){return resultTalent;}
+        resultTalent = talente.Körpertalente.find(function(element){return element.id == searchId;});
+        if(resultTalent){return resultTalent;}
+        resultTalent = talente.Naturtalente.find(function(element){return element.id == searchId;});
+        if(resultTalent){return resultTalent;}
+        resultTalent = talente.Wissenstalente.find(function(element){return element.id == searchId;});
+        if(resultTalent){return resultTalent;}
+    }
 };

@@ -51,8 +51,8 @@ var eigenschaftView = {
         result += "</h5>";
         result += "  <div class=\"card-body\">";
         result += "    <h5 id=\"value" + eigenschaft.name + "\" class=\"card-title\">" + eigenschaft.value + "</h5>";
-        result += "    <div><button id=\"up" + eigenschaft.name + "\" class=\"btn btn-primary btn-sm up\">&#8593;</button>";
-        result += "<button id=\"down" + eigenschaft.name + "\" class=\"btn btn-primary btn-sm down\">&#8595;</button>";
+        result += "    <div><button id=\"up" + eigenschaft.name + "\" class=\"btn btn-primary btn-sm upEigenschaft\">&#8593;</button>";
+        result += "<button id=\"down" + eigenschaft.name + "\" class=\"btn btn-primary btn-sm downEigenschaft\">&#8595;</button>";
         result += this._displayDialog(eigenschaft) + "</div>";
         result += "  </div>";
         result += "</div>";
@@ -84,29 +84,54 @@ var eigenschaftView = {
 };
 
 var talenteView = {
-    displayTalente: function () {
-
-        // eslint-disable-next-line no-undef
-        // var talentGruppenNamen = Object.keys(talente);
-        // talentGruppenNamen.forEach(talenteView._displayTalentGruppe);
-
-        talenteView._displayTalentGruppe("Körpertalente", "TalenteCol1"); 
-        talenteView._displayTalentGruppe("Gesellschaftstalente", "TalenteCol1"); 
-        talenteView._displayTalentGruppe("Naturtalente", "TalenteCol1"); 
-        talenteView._displayTalentGruppe("Wissenstalente", "TalenteCol2"); 
-        talenteView._displayTalentGruppe("Handwerkstalente", "TalenteCol2"); 
+    displayTalente: function() {
+        talenteView._displayTalentGruppe("Körpertalente", "TalenteCol1");
+        talenteView._displayTalentGruppe("Gesellschaftstalente", "TalenteCol1");
+        talenteView._displayTalentGruppe("Naturtalente", "TalenteCol1");
+        talenteView._displayTalentGruppe("Wissenstalente", "TalenteCol2");
+        talenteView._displayTalentGruppe("Handwerkstalente", "TalenteCol2");
     },
-    _displayTalentGruppe: function (gruppenname, col) {
+    updateValue: function(talent){
+        var talentText; 
+        if (talent.value == -1) {
+            talentText = "-"; 
+        } else {
+            talentText = talent.value; 
+        }
+        $("#value" + talent.id).text(talentText);
+        // eslint-disable-next-line no-undef
+        $("#steigerung" + talent.id).text(steigerung[talent.Steigerungskosten][talent.value+1]);
+    }, 
+    updateActions: function () {
+        // eslint-disable-next-line no-undef
+        talente.iterateAllTalente(talenteView._updateButton);
+    },
+    _updateButton: function (talent) {
+        // down
+        if (talent.value < 0) {
+            $("#down" + talent.id).attr("disabled", "disabled").button("refresh");
+        } else {
+            $("#down" + talent.id).removeAttr("disabled").button("refresh");
+        }
+        // up
+        // eslint-disable-next-line no-undef
+        if (talent.value < 25 && abenteuerpunkte.value - steigerung[talent.Steigerungskosten][talent.value+1] >= 0) {
+            $("#up" + talent.id).removeAttr("disabled").button("refresh");
+        } else {
+            $("#up" + talent.id).attr("disabled", "disabled").button("refresh");
+        }
+    },
+    _displayTalentGruppe: function(gruppenname, col) {
 
         var result = "";
-        result += "<div class=\"col\">" +
+        result += "<div class=\"col-12\">" +
             "<table class=\"table table-sm\">" +
             "<thead>" +
             "<tr>" +
             "<th scope=\"col\">" + gruppenname + "</th>" +
             "<th scope=\"col\">Probe</th>" +
-            "<th scope=\"col\">Kosten</th>" +
             "<th scope=\"col\">FW</th>" +
+            "<th scope=\"col\">AP</th>" +
             "<th scope=\"col\">leveln</th>" +
             "</tr>" +
             "</thead>" +
@@ -121,32 +146,26 @@ var talenteView = {
                 // eslint-disable-next-line no-undef
                 "<th scope=\"row\">" + talent.name + "</th>" +
                 "<td>" + talent.Probe + "</td>" +
-                "<td>" + 15 + "</td>" +
-                "<td>" + 8 + "</td>" +
+                "<td><strong id=\"value" + talent.id + "\">-</strong></td>" +
+                // eslint-disable-next-line no-undef
+                "<td id=\"steigerung" + talent.id + "\">" + steigerung[talent.Steigerungskosten][0] + "</td>" +
+                "<td><button id=\"up" + talent.id + "\" class=\"btn btn-primary btn-sm upTalent\">&#8593;</button>" +
+                "<button id=\"down" + talent.id + "\" class=\"btn btn-primary btn-sm downTalent\">&#8595;</button></td>" +
                 "</tr>";
         }
 
         result += "</tbody>" +
             "</table>" +
             "</div>";
-        $("#"+col).append(result);
+        $("#" + col).append(result);
     }
 };
 
 var abenteuerpunkteView = {
-    updateValue: function () {
+    updateValue: function() {
         // eslint-disable-next-line no-undef
         $("#AP").text(abenteuerpunkte.value);
         eigenschaftView.updateActions();
+        talenteView.updateActions(); 
     }
 };
-
-// <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
-
-// <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-//   <div class="modal-dialog modal-sm">
-//     <div class="modal-content">
-//       ...
-//     </div>
-//   </div>
-// </div>
