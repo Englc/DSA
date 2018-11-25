@@ -1,0 +1,11 @@
+.table th {
+    padding: 0.25em; 
+}
+
+.table td {
+    padding: 0em; 
+}
+
+label {
+    margin-bottom: 0em; 
+}
