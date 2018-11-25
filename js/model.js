@@ -1,42 +1,51 @@
+/* eslint-disable no-unused-vars */
 var eigenschaften = [
     {
         name: "MU",
         bezeichnung: "Mut",
+        beschreibung: "Der Mutwert steht für Furchtlosigkeit und entschlossenes Handeln. Ein hoher Wert beeinflusst die Abwehrkraft gegen Zaubersprüche und Liturgien und lässt einen Helden auch angesichts großer Gefahren nicht verzagen.",
         value: 0
     },
     {
         name: "KL",
         bezeichnung: "Klugheit",
+        beschreibung: "Klugheit steht einerseits für eine gute Analysefähigkeit und ausgeprägte Logikkenntnisse, andererseits für Allgemeinwissen. Auch ein gutes Gedächtnis und Erinnerungsvermögen werden damit abgebildet.",
         value: 0
     },
     {
         name: "IN",
-        bezeichnung: "Intelligenz",
+        bezeichnung: "Intuition",
+        beschreibung: "Vorahnung, Einfühlungsvermögen und Bauchgefühl sind die wesentlichen Bestandteile einer hohen Intuition. Sie steht außerdem dafür, unter Stress die richtige Entscheidung zu treffen.",
         value: 0
     },
     {
         name: "CH",
         bezeichnung: "Charisma",
+        beschreibung: "Persönliche Ausstrahlung, Überzeugungskraft und eine güldene Zunge – für all diese Attribute steht das Charisma. Attraktivität kann ebenfalls über diese Eigenschaft hergeleitet werden, Charisma ist aber nicht gleichbedeutend mit gutem Aussehen.",
         value: 0
     },
     {
         name: "FF",
         bezeichnung: "Fingerfertigkeit",
+        beschreibung: "Fingerfertigkeit umfasst die Geschicklichkeit der Finger und die Koordination zwischen Auge und Hand. Sie gibt an, wie gut ein Held den Einsatz von Dietrichen, handwerkliche Tätigkeiten oder das Bogenschießen beherrscht.",
         value: 0
     },
     {
         name: "GE",
-        bezeichnung: "Geschick",
+        bezeichnung: "Gewandtheit",
+        beschreibung: "Im Unterschied zur Fingerfertigkeit steht die Gewandtheit für die Geschicklichkeit des ganzen Körpers. Reflexe, Reaktionsvermögen, aber auch Beweglichkeit spielen in die Gewandtheit mit hinein.",
         value: 0
     },
     {
         name: "KO",
         bezeichnung: "Konstitution",
+        beschreibung: "Der Konstitutionswert ist ein Maß für die Ausdauer eines Helden. Eine hohe Konstitution sorgt nicht nur für mehr Lebenspunkte, sondern ebenso für eine größere Resistenz gegenüber Giften und Krankheiten.",
         value: 0
     },
     {
         name: "KK",
         bezeichnung: "Körperkraft",
+        beschreibung: "Stärke und Muskelkontrolle fließen maßgeblich in die Körperkraft des Helden ein. Sie steht jedoch nicht nur für schiere Muskelkraft, sondern ebenfalls für die richtige Technik, um diese einzusetzen.",
         value: 0
     },
 
@@ -44,7 +53,7 @@ var eigenschaften = [
 
 var talente =
 {
-    Gesellschaftstalente =[
+    Gesellschaftstalente: [
         {
             name: "Bekehren & Überzeugen",
             Probe: "MU/KL/CH",
