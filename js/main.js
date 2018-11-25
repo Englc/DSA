@@ -2,6 +2,7 @@
 $(document).ready(function () {
 
     eigenschaftView.displayEigenschaften(); 
+    talenteView.displayTalente(); 
     abenteuerpunkteView.updateValue(); 
 
     $(".up").on("click", clickUpHandler);
