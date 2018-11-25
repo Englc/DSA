@@ -47,7 +47,7 @@ var eigenschaftView = {
         var result = "";
         result += "<div class=\"card\">";
         result += "  <h5 class=\"card-header\">" + eigenschaft.name; 
-        result += "<button type=\"button\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\"#info"+ eigenschaft.name + "\">i</button>";
+        result += " <button type=\"button\" class=\"btn btn-outline-secondary btn-sm btn-info\" data-toggle=\"modal\" data-target=\"#info"+ eigenschaft.name + "\">i</button>";
         result += "</h5>";
         result += "  <div class=\"card-body\">";
         result += "    <h5 id=\"value" + eigenschaft.name + "\" class=\"card-title\">" + eigenschaft.value + "</h5>";
