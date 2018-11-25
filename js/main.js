@@ -1,5 +1,5 @@
+/* eslint-disable no-undef */
 $(document).ready(function () {
-    // eslint-disable-next-line no-undef
     eigenschaften.forEach(function (eigenschaft, index) {
         var target; 
         if(index < 4) {
@@ -7,28 +7,19 @@ $(document).ready(function () {
         } else {
             target = "#EigenschaftenCol2"; 
         }
-        $(target).append(displayEigenschaft(eigenschaft));
+        $(target).append(eigenschaftView.displayEigenschaft(eigenschaft));
     });
+
+    abenteuerpunkteView.updateValue(); 
+
+    $(".up").on("click", clickUpHandler);
 });
 
-function displayEigenschaft(eigenschaft){
-    return eigenschaftCol(eigenschaftCard(eigenschaft.name, eigenschaft.value));
-}
+var clickUpHandler = function(event){
+    var currentEigenschaft = eigenschaften.find(function(element){return element.name == event.target.id.substr(2,2);});
+    currentEigenschaft.value++; 
+    abenteuerpunkte.value -= 15; 
 
-
-function eigenschaftCol(content) {
-    return "<div class=\"col-3 eigenschaftcard\">" + content + "</div>";
-}
-
-function eigenschaftCard(name, value) {
-    var result = "";
-    result += "<div class=\"card\">";
-    result += "  <h5 class=\"card-header\">"+name+"</h5>";
-    result += "  <div class=\"card-body\">";
-    result += "    <h5 class=\"card-title\">"+value+"</h5>";
-    result += "    <a href=\"#\" class=\"btn btn-primary\">Go</a>";
-    result += "  </div>";
-    result += "</div>";
-
-    return result;
-}
+    eigenschaftView.updateValue(currentEigenschaft);
+    abenteuerpunkteView.updateValue(); 
+};
