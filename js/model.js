@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 var abenteuerpunkte = {
-    value: 900
+    value: 2000
 };
 
 var steigerung = {
