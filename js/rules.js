@@ -1,8 +1,4 @@
 /* eslint-disable no-unused-vars */
-var abenteuerpunkte = {
-    value: 2000
-};
-
 var steigerung = {
     A: [1,1,1,1,1,1,1,1,1,1,1,1,1,2,3,4,5,6,7,8,9,10,11,12,13,14],
     B: [2,2,2,2,2,2,2,2,2,2,2,2,2,4,6,8,10,12,14,16,18,20,22,24,26,28],
@@ -15,50 +11,42 @@ var eigenschaften = [
     {
         name: "MU",
         bezeichnung: "Mut",
-        beschreibung: "Der Mutwert steht für Furchtlosigkeit und entschlossenes Handeln. Ein hoher Wert beeinflusst die Abwehrkraft gegen Zaubersprüche und Liturgien und lässt einen Helden auch angesichts großer Gefahren nicht verzagen.",
-        value: 8
+        beschreibung: "Der Mutwert steht für Furchtlosigkeit und entschlossenes Handeln. Ein hoher Wert beeinflusst die Abwehrkraft gegen Zaubersprüche und Liturgien und lässt einen Helden auch angesichts großer Gefahren nicht verzagen."         
     },
     {
         name: "KL",
         bezeichnung: "Klugheit",
-        beschreibung: "Klugheit steht einerseits für eine gute Analysefähigkeit und ausgeprägte Logikkenntnisse, andererseits für Allgemeinwissen. Auch ein gutes Gedächtnis und Erinnerungsvermögen werden damit abgebildet.",
-        value: 8
+        beschreibung: "Klugheit steht einerseits für eine gute Analysefähigkeit und ausgeprägte Logikkenntnisse, andererseits für Allgemeinwissen. Auch ein gutes Gedächtnis und Erinnerungsvermögen werden damit abgebildet."         
     },
     {
         name: "IN",
         bezeichnung: "Intuition",
-        beschreibung: "Vorahnung, Einfühlungsvermögen und Bauchgefühl sind die wesentlichen Bestandteile einer hohen Intuition. Sie steht außerdem dafür, unter Stress die richtige Entscheidung zu treffen.",
-        value: 8
+        beschreibung: "Vorahnung, Einfühlungsvermögen und Bauchgefühl sind die wesentlichen Bestandteile einer hohen Intuition. Sie steht außerdem dafür, unter Stress die richtige Entscheidung zu treffen."         
     },
     {
         name: "CH",
         bezeichnung: "Charisma",
-        beschreibung: "Persönliche Ausstrahlung, Überzeugungskraft und eine güldene Zunge – für all diese Attribute steht das Charisma. Attraktivität kann ebenfalls über diese Eigenschaft hergeleitet werden, Charisma ist aber nicht gleichbedeutend mit gutem Aussehen.",
-        value: 8
+        beschreibung: "Persönliche Ausstrahlung, Überzeugungskraft und eine güldene Zunge – für all diese Attribute steht das Charisma. Attraktivität kann ebenfalls über diese Eigenschaft hergeleitet werden, Charisma ist aber nicht gleichbedeutend mit gutem Aussehen."         
     },
     {
         name: "FF",
         bezeichnung: "Fingerfertigkeit",
-        beschreibung: "Fingerfertigkeit umfasst die Geschicklichkeit der Finger und die Koordination zwischen Auge und Hand. Sie gibt an, wie gut ein Held den Einsatz von Dietrichen, handwerkliche Tätigkeiten oder das Bogenschießen beherrscht.",
-        value: 8
+        beschreibung: "Fingerfertigkeit umfasst die Geschicklichkeit der Finger und die Koordination zwischen Auge und Hand. Sie gibt an, wie gut ein Held den Einsatz von Dietrichen, handwerkliche Tätigkeiten oder das Bogenschießen beherrscht."         
     },
     {
         name: "GE",
         bezeichnung: "Gewandtheit",
-        beschreibung: "Im Unterschied zur Fingerfertigkeit steht die Gewandtheit für die Geschicklichkeit des ganzen Körpers. Reflexe, Reaktionsvermögen, aber auch Beweglichkeit spielen in die Gewandtheit mit hinein.",
-        value: 8
+        beschreibung: "Im Unterschied zur Fingerfertigkeit steht die Gewandtheit für die Geschicklichkeit des ganzen Körpers. Reflexe, Reaktionsvermögen, aber auch Beweglichkeit spielen in die Gewandtheit mit hinein."         
     },
     {
         name: "KO",
         bezeichnung: "Konstitution",
-        beschreibung: "Der Konstitutionswert ist ein Maß für die Ausdauer eines Helden. Eine hohe Konstitution sorgt nicht nur für mehr Lebenspunkte, sondern ebenso für eine größere Resistenz gegenüber Giften und Krankheiten.",
-        value: 8
+        beschreibung: "Der Konstitutionswert ist ein Maß für die Ausdauer eines Helden. Eine hohe Konstitution sorgt nicht nur für mehr Lebenspunkte, sondern ebenso für eine größere Resistenz gegenüber Giften und Krankheiten."         
     },
     {
         name: "KK",
         bezeichnung: "Körperkraft",
-        beschreibung: "Stärke und Muskelkontrolle fließen maßgeblich in die Körperkraft des Helden ein. Sie steht jedoch nicht nur für schiere Muskelkraft, sondern ebenfalls für die richtige Technik, um diese einzusetzen.",
-        value: 8
+        beschreibung: "Stärke und Muskelkontrolle fließen maßgeblich in die Körperkraft des Helden ein. Sie steht jedoch nicht nur für schiere Muskelkraft, sondern ebenfalls für die richtige Technik, um diese einzusetzen."         
     },
 
 ];
@@ -811,7 +799,6 @@ var talente =
         for(var talentGruppe in talente) {
             for(var talentIndex in talente[talentGruppe]) { 
                 talente[talentGruppe][talentIndex].id = talente[talentGruppe][talentIndex].name.replace(/\s/g, "").replace(/[^\w\s]/gi, "");
-                talente[talentGruppe][talentIndex].value = -1; 
             }
         }
     },

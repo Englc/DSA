@@ -1,6 +1,9 @@
 /* eslint-disable no-undef */
 $(document).ready(function () {
     talente.init();
+    heldendokument.init();
+
+    applyErfahrung();
 
     eigenschaftView.displayEigenschaften();
     talenteView.displayTalente();
@@ -10,22 +13,56 @@ $(document).ready(function () {
     $(".downEigenschaft").on("click", clickDownHandler);
     $(".upTalent").on("click", clickUpTalentHandler);
     $(".downTalent").on("click", clickDownTalentHandler);
+    $(".btnErfahrung").on("change", toggleErfahrungHandler);
 
 });
 
+var toggleErfahrungHandler = function (){
+    heldendokument.abenteuerpunkte.undo("start"); 
+    applyErfahrung(); 
+
+    abenteuerpunkteView.updateValue(); 
+}; 
+
+var applyErfahrung = function () {
+    switch ($("input[name=erfahrung]:checked")[0].id) {
+    case "2":
+        heldendokument.abenteuerpunkte.update(1000, "start", "");
+        break;
+    case "3":
+        heldendokument.abenteuerpunkte.update(1100, "start", "");
+        break;
+    case "4":
+        heldendokument.abenteuerpunkte.update(1200, "start", "");
+        break;
+    case "5":
+        heldendokument.abenteuerpunkte.update(1400, "start", "");
+        break;
+    case "6":
+        heldendokument.abenteuerpunkte.update(1700, "start", "");
+        break;
+    case "7":
+        heldendokument.abenteuerpunkte.update(2100, "start", "");
+        break;
+    default:
+        heldendokument.abenteuerpunkte.update(900, "start", "");
+        break;
+    }
+};
+
 var clickUpHandler = function (event) {
-    var currentEigenschaft = eigenschaften.find(function (element) { return element.name == event.target.id.substr(2, 2); });
-    currentEigenschaft.value++;
-    abenteuerpunkte.value -= steigerung.E[currentEigenschaft.value];
+    var currentEigenschaft = event.target.id.substr(2, 2);
+    heldendokument.eigenschaftswerte[currentEigenschaft]++;
+    heldendokument.abenteuerpunkte.update(-1 * steigerung.E[heldendokument.eigenschaftswerte[currentEigenschaft]], currentEigenschaft, "=>" + heldendokument.eigenschaftswerte[currentEigenschaft]);
 
     eigenschaftView.updateValue(currentEigenschaft);
     abenteuerpunkteView.updateValue();
 };
 
 var clickDownHandler = function (event) {
-    var currentEigenschaft = eigenschaften.find(function (element) { return element.name == event.target.id.substr(4, 2); });
-    abenteuerpunkte.value += steigerung.E[currentEigenschaft.value];
-    currentEigenschaft.value--;
+    var currentEigenschaft = event.target.id.substr(4, 2);
+    heldendokument.abenteuerpunkte.undo(currentEigenschaft);
+    heldendokument.eigenschaftswerte[currentEigenschaft]--;
 
     eigenschaftView.updateValue(currentEigenschaft);
     abenteuerpunkteView.updateValue();
@@ -35,8 +72,8 @@ var clickUpTalentHandler = function (event) {
     var currentTalentId = event.target.id.substr(2, event.target.id.length - 2);
     var currentTalent = talente.getTalent(currentTalentId);
 
-    currentTalent.value++;
-    abenteuerpunkte.value -= steigerung[currentTalent.Steigerungskosten][currentTalent.value];
+    heldendokument.talentwerte[currentTalentId]++;
+    heldendokument.abenteuerpunkte.update(-1 * steigerung[currentTalent.Steigerungskosten][heldendokument.talentwerte[currentTalentId]], currentTalentId, "=>" + heldendokument.talentwerte[currentTalentId]);
 
     abenteuerpunkteView.updateValue();
     talenteView.updateValue(currentTalent);
@@ -46,8 +83,8 @@ var clickDownTalentHandler = function (event) {
     var currentTalentId = event.target.id.substr(4, event.target.id.length - 4);
     var currentTalent = talente.getTalent(currentTalentId);
 
-    abenteuerpunkte.value += steigerung[currentTalent.Steigerungskosten][currentTalent.value];
-    currentTalent.value--;
+    heldendokument.abenteuerpunkte.undo(currentTalentId);
+    heldendokument.talentwerte[currentTalentId]--;
 
     abenteuerpunkteView.updateValue();
     talenteView.updateValue(currentTalent);

@@ -1,8 +1,9 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 var eigenschaftView = {
-    updateValue: function (eigenschaft) {
-        $("#value" + eigenschaft.name).text(eigenschaft.value);
+    updateValue: function (eigenschaftName) {
+        // eslint-disable-next-line no-undef
+        $("#value" + eigenschaftName).text(heldendokument.eigenschaftswerte[eigenschaftName]);
     },
     displayEigenschaften: function () {
         // eslint-disable-next-line no-undef
@@ -24,14 +25,15 @@ var eigenschaftView = {
     },
     _updateButton: function (eigenschaft) {
         // down
-        if (eigenschaft.value == 8) {
+        // eslint-disable-next-line no-undef
+        if (heldendokument.eigenschaftswerte[eigenschaft.name] == 8) {
             $("#down" + eigenschaft.name).attr("disabled", "disabled").button("refresh");
         } else {
             $("#down" + eigenschaft.name).removeAttr("disabled").button("refresh");
         }
         // up
         // eslint-disable-next-line no-undef
-        if (eigenschaft.value < 25 && abenteuerpunkte.value - steigerung.E[eigenschaft.value + 1] >= 0) {
+        if (heldendokument.eigenschaftswerte[eigenschaft.name] < 25 && heldendokument.abenteuerpunkte.value - steigerung.E[heldendokument.eigenschaftswerte[eigenschaft.name] + 1] >= 0) {
             $("#up" + eigenschaft.name).removeAttr("disabled").button("refresh");
         } else {
             $("#up" + eigenschaft.name).attr("disabled", "disabled").button("refresh");
@@ -47,12 +49,13 @@ var eigenschaftView = {
         var result = "";
         result += "<div class=\"card\">";
         result += "  <h5 class=\"card-header\">" + eigenschaft.name;
-        result += " <button type=\"button\" class=\"btn btn-outline-secondary btn-sm\" data-toggle=\"modal\" data-target=\"#info" + eigenschaft.name + "\">Info</button>";
+        result += " <button type=\"button\" class=\"btn btn-outline-info btn-sm\" data-toggle=\"modal\" data-target=\"#info" + eigenschaft.name + "\">Info</button>";
         result += "</h5>";
         result += "  <div class=\"card-body\">";
-        result += "    <h5 id=\"value" + eigenschaft.name + "\" class=\"card-title\">" + eigenschaft.value + "</h5>";
-        result += "    <div><button id=\"up" + eigenschaft.name + "\" class=\"btn btn-outline-secondary btn-sm upEigenschaft\">&#8593;</button>";
-        result += "<button id=\"down" + eigenschaft.name + "\" class=\"btn btn-outline-secondary btn-sm downEigenschaft\">&#8595;</button>";
+        // eslint-disable-next-line no-undef
+        result += "    <h5 id=\"value" + eigenschaft.name + "\" class=\"card-title\">" + heldendokument.eigenschaftswerte[eigenschaft.name] + "</h5>";
+        result += "    <div><button id=\"up" + eigenschaft.name + "\" class=\"btn btn-primary btn-sm upEigenschaft\">&#8593;</button>";
+        result += "<button id=\"down" + eigenschaft.name + "\" class=\"btn btn-primary btn-sm downEigenschaft\">&#8595;</button>";
         result += this._displayDialog(eigenschaft) + "</div>";
         result += "  </div>";
         result += "</div>";
@@ -93,14 +96,16 @@ var talenteView = {
     },
     updateValue: function(talent){
         var talentText; 
-        if (talent.value == -1) {
+        // eslint-disable-next-line no-undef
+        if (heldendokument.talentwerte[talent.id] == -1) {
             talentText = "-"; 
         } else {
-            talentText = talent.value; 
+            // eslint-disable-next-line no-undef
+            talentText = heldendokument.talentwerte[talent.id]; 
         }
         $("#value" + talent.id).text(talentText);
         // eslint-disable-next-line no-undef
-        $("#steigerung" + talent.id).text(steigerung[talent.Steigerungskosten][talent.value+1]);
+        $("#steigerung" + talent.id).text(steigerung[talent.Steigerungskosten][heldendokument.talentwerte[talent.id]+1]);
     }, 
     updateActions: function () {
         // eslint-disable-next-line no-undef
@@ -108,14 +113,15 @@ var talenteView = {
     },
     _updateButton: function (talent) {
         // down
-        if (talent.value < 0) {
+        // eslint-disable-next-line no-undef
+        if (heldendokument.talentwerte[talent.id] < 0) {
             $("#down" + talent.id).attr("disabled", "disabled").button("refresh");
         } else {
             $("#down" + talent.id).removeAttr("disabled").button("refresh");
         }
         // up
         // eslint-disable-next-line no-undef
-        if (talent.value < 25 && abenteuerpunkte.value - steigerung[talent.Steigerungskosten][talent.value+1] >= 0) {
+        if (heldendokument.talentwerte[talent.id] < 25 && heldendokument.abenteuerpunkte.value - steigerung[talent.Steigerungskosten][heldendokument.talentwerte[talent.id]+1] >= 0) {
             $("#up" + talent.id).removeAttr("disabled").button("refresh");
         } else {
             $("#up" + talent.id).attr("disabled", "disabled").button("refresh");
@@ -164,7 +170,7 @@ var talenteView = {
 var abenteuerpunkteView = {
     updateValue: function() {
         // eslint-disable-next-line no-undef
-        $("#AP").text(abenteuerpunkte.value);
+        $("#AP").text(heldendokument.abenteuerpunkte.value);
         eigenschaftView.updateActions();
         talenteView.updateActions(); 
     }
