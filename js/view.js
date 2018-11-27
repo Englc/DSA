@@ -173,5 +173,20 @@ var abenteuerpunkteView = {
         $("#AP").text(heldendokument.abenteuerpunkte.value);
         eigenschaftView.updateActions();
         talenteView.updateActions(); 
+    }, 
+    updateHistory: function() {
+        var result = "";
+        // eslint-disable-next-line no-undef
+        heldendokument.abenteuerpunkte.history.forEach(function(log){
+            if(log.action == "start" || log.action == "abenteuer") {
+                result+= "<p>" + log.description + ": " + log.cost + " AP</p>";
+            } else {
+                result+= "<p>" + log.action + " " + log.description + ": " + log.cost + " AP</p>";
+            }
+        }, this);
+        result+="<hr>";
+        result+= "<p><strong>AP Gesamt: </strong>" + heldendokument.abenteuerpunkte.getEarnSum() + " AP</p>";
+        result+= "<p><strong>Ausgegeben: </strong>" + heldendokument.abenteuerpunkte.getPaySum() + " AP</p>";
+        $("#verlaufContent").html(result);
     }
 };

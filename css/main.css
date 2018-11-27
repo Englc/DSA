@@ -19,3 +19,7 @@
 .card-body {
     padding: .75rem 1.25rem;
 }
+
+p {
+    margin-bottom: 0.2rem; 
+}

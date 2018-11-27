@@ -4,7 +4,6 @@ $(document).ready(function () {
     heldendokument.init();
 
     applyErfahrung();
-
     eigenschaftView.displayEigenschaften();
     talenteView.displayTalente();
     abenteuerpunkteView.updateValue();
@@ -27,25 +26,25 @@ var toggleErfahrungHandler = function (){
 var applyErfahrung = function () {
     switch ($("input[name=erfahrung]:checked")[0].id) {
     case "2":
-        heldendokument.abenteuerpunkte.update(1000, "start", "");
+        heldendokument.abenteuerpunkte.update(1000, "start", "Durchschnitt");
         break;
     case "3":
-        heldendokument.abenteuerpunkte.update(1100, "start", "");
+        heldendokument.abenteuerpunkte.update(1100, "start", "Erfahren");
         break;
     case "4":
-        heldendokument.abenteuerpunkte.update(1200, "start", "");
+        heldendokument.abenteuerpunkte.update(1200, "start", "Kompetent");
         break;
     case "5":
-        heldendokument.abenteuerpunkte.update(1400, "start", "");
+        heldendokument.abenteuerpunkte.update(1400, "start", "Meister");
         break;
     case "6":
-        heldendokument.abenteuerpunkte.update(1700, "start", "");
+        heldendokument.abenteuerpunkte.update(1700, "start", "Brilliant");
         break;
     case "7":
-        heldendokument.abenteuerpunkte.update(2100, "start", "");
+        heldendokument.abenteuerpunkte.update(2100, "start", "Legendär");
         break;
     default:
-        heldendokument.abenteuerpunkte.update(900, "start", "");
+        heldendokument.abenteuerpunkte.update(900, "start", "Unerfahren");
         break;
     }
 };
