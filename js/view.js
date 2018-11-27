@@ -187,6 +187,7 @@ var abenteuerpunkteView = {
         result+="<hr>";
         result+= "<p><strong>AP Gesamt: </strong>" + heldendokument.abenteuerpunkte.getEarnSum() + " AP</p>";
         result+= "<p><strong>Ausgegeben: </strong>" + heldendokument.abenteuerpunkte.getPaySum() + " AP</p>";
+        result+= "<p><strong>Aktuell: </strong>" + heldendokument.abenteuerpunkte.value + " AP</p>";
         $("#verlaufContent").html(result);
     }
 };
