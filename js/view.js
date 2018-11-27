@@ -88,11 +88,11 @@ var eigenschaftView = {
 
 var talenteView = {
     displayTalente: function() {
-        talenteView._displayTalentGruppe("Körpertalente", "TalenteCol1");
-        talenteView._displayTalentGruppe("Gesellschaftstalente", "TalenteCol1");
-        talenteView._displayTalentGruppe("Naturtalente", "TalenteCol1");
-        talenteView._displayTalentGruppe("Wissenstalente", "TalenteCol2");
-        talenteView._displayTalentGruppe("Handwerkstalente", "TalenteCol2");
+        talenteView._displayTalentGruppe("Körpertalente");
+        talenteView._displayTalentGruppe("Gesellschaftstalente");
+        talenteView._displayTalentGruppe("Naturtalente");
+        talenteView._displayTalentGruppe("Wissenstalente");
+        talenteView._displayTalentGruppe("Handwerkstalente");
     },
     updateValue: function(talent){
         var talentText; 
@@ -127,21 +127,9 @@ var talenteView = {
             $("#up" + talent.id).attr("disabled", "disabled").button("refresh");
         }
     },
-    _displayTalentGruppe: function(gruppenname, col) {
+    _displayTalentGruppe: function(gruppenname) {
 
         var result = "";
-        result += "<div class=\"col-12\">" +
-            "<table class=\"table table-sm\">" +
-            "<thead>" +
-            "<tr>" +
-            "<th scope=\"col\">" + gruppenname + "</th>" +
-            "<th scope=\"col\">Probe</th>" +
-            "<th scope=\"col\">FW</th>" +
-            "<th scope=\"col\">AP</th>" +
-            "<th scope=\"col\">leveln</th>" +
-            "</tr>" +
-            "</thead>" +
-            "<tbody>";
 
         // eslint-disable-next-line no-undef
         var talentGruppe = talente[gruppenname];
@@ -159,11 +147,7 @@ var talenteView = {
                 "<button id=\"down" + talent.id + "\" class=\"btn btn-primary btn-sm downTalent\">&#8595;</button></td>" +
                 "</tr>";
         }
-
-        result += "</tbody>" +
-            "</table>" +
-            "</div>";
-        $("#" + col).append(result);
+        $("#" + gruppenname).append(result);
     }
 };
 

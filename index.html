@@ -7,8 +7,6 @@
     <title>DSA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
@@ -29,22 +27,23 @@
                 </h4>
                 <div class="modal fade" id="history" tabindex="-1" role="dialog" aria-labelledby="history" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="historyTitle">Verlauf</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="historyTitle">Verlauf</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div id="verlaufContent" class="modal-body">
+                            </div>
                         </div>
-                        <div id="verlaufContent" class="modal-body">
-                        </div>
-                      </div>
                     </div>
-                  </div>
+                </div>
             </div>
             <div class="col-12 btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-success btn-sm active">
-                    <input type="radio" name="erfahrung" id="1" class="btnErfahrung" autocomplete="off" checked> Unerfahren
+                    <input type="radio" name="erfahrung" id="1" class="btnErfahrung" autocomplete="off" checked>
+                    Unerfahren
                 </label>
                 <label class="btn btn-success btn-sm">
                     <input type="radio" name="erfahrung" id="2" class="btnErfahrung" autocomplete="off"> Durchschnitt
@@ -52,7 +51,7 @@
                 <label class="btn btn-success btn-sm">
                     <input type="radio" name="erfahrung" id="3" class="btnErfahrung" autocomplete="off"> Erfahren
                 </label>
-                <label class="btn btn-success btn-sm">
+                <!-- <label class="btn btn-success btn-sm">
                     <input type="radio" name="erfahrung" id="4" class="btnErfahrung" autocomplete="off"> Kompetent
                 </label>
                 <label class="btn btn-success btn-sm">
@@ -63,7 +62,7 @@
                 </label>
                 <label class="btn btn-success btn-sm">
                     <input type="radio" name="erfahrung" id="7" class="btnErfahrung" autocomplete="off"> Legendär
-                </label>
+                </label> -->
             </div>
         </div>
         <div class="row">
@@ -76,10 +75,168 @@
         </div>
         <div id="talente" class="row">
             <div class="col-12 col-lg-6">
-                <div id="TalenteCol1" class="row"></div>
+                <div class="accordion" id="leftTalente">
+                    <div class="card">
+                        <div class="card-header" id="headingKörpertalente">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseKörpertalente"
+                                    aria-expanded="true" aria-controls="collapseKörpertalente">
+                                    <strong>Körpertalente</strong>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseKörpertalente" class="collapse show" aria-labelledby="headingKörpertalente"
+                            data-parent="#leftTalente">
+                            <div class="card-body p-0">
+                                <div class="col-12">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">Probe</th>
+                                                <th scope="col">FW</th>
+                                                <th scope="col">AP</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Körpertalente">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingGesellschaftstalente">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseGesellschaftstalente"
+                                    aria-expanded="true" aria-controls="collapseGesellschaftstalente">
+                                    <strong>Gesellschaftstalente</strong>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseGesellschaftstalente" class="collapse" aria-labelledby="headingGesellschaftstalente"
+                            data-parent="#leftTalente">
+                            <div class="card-body p-0">
+                                <div class="col-12">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">Probe</th>
+                                                <th scope="col">FW</th>
+                                                <th scope="col">AP</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Gesellschaftstalente">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingNaturtalente">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseNaturtalente"
+                                    aria-expanded="true" aria-controls="collapseNaturtalente">
+                                    <strong>Naturtalente</strong>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseNaturtalente" class="collapse" aria-labelledby="headingNaturtalente"
+                            data-parent="#leftTalente">
+                            <div class="card-body p-0">
+                                <div class="col-12">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">Probe</th>
+                                                <th scope="col">FW</th>
+                                                <th scope="col">AP</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Naturtalente">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div class="col-12 col-lg-6">
-                <div id="TalenteCol2" class="row"></div>
+                <div class="accordion" id="rightTalente">
+                    <div class="card">
+                        <div class="card-header" id="headingWissenstalente">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseWissenstalente"
+                                    aria-expanded="true" aria-controls="collapseWissenstalente">
+                                    <strong>Wissenstalente</strong>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseWissenstalente" class="collapse show" aria-labelledby="headingWissenstalente"
+                            data-parent="#rightTalente">
+                            <div class="card-body p-0">
+                                <div class="col-12">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">Probe</th>
+                                                <th scope="col">FW</th>
+                                                <th scope="col">AP</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Wissenstalente">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingHandwerkstalente">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseHandwerkstalente"
+                                    aria-expanded="true" aria-controls="collapseHandwerkstalente">
+                                    <strong>Handwerkstalente</strong>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseHandwerkstalente" class="collapse" aria-labelledby="headingHandwerkstalente"
+                            data-parent="#rightTalente">
+                            <div class="card-body p-0">
+                                <div class="col-12">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">Probe</th>
+                                                <th scope="col">FW</th>
+                                                <th scope="col">AP</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Handwerkstalente">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

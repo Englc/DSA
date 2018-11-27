@@ -23,3 +23,26 @@
 p {
     margin-bottom: 0.2rem; 
 }
+
+.no-style {
+    color: #212529; 
+    transition: none; 
+    text-decoration: none; 
+}
+
+.no-style:hover {
+    color: #212529; 
+    text-decoration: none; 
+}
+
+.no-style:focus {
+    text-decoration: none; 
+}
+
+.accordion {
+   -moz-hyphens: auto;
+   -o-hyphens: auto;
+   -webkit-hyphens: auto;
+   -ms-hyphens: auto;
+   hyphens: auto; 
+}
