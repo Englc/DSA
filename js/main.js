@@ -56,6 +56,7 @@ var clickUpHandler = function (event) {
 
     eigenschaftView.updateValue(currentEigenschaft);
     abenteuerpunkteView.updateValue();
+    talenteView.updateProbs(currentEigenschaft);
 };
 
 var clickDownHandler = function (event) {
@@ -65,11 +66,12 @@ var clickDownHandler = function (event) {
 
     eigenschaftView.updateValue(currentEigenschaft);
     abenteuerpunkteView.updateValue();
+    talenteView.updateProbs(currentEigenschaft);
 };
 
 var clickUpTalentHandler = function (event) {
     var currentTalentId = event.target.id.substr(2, event.target.id.length - 2);
-    var currentTalent = talente.getTalent(currentTalentId);
+    var currentTalent = talente.getTalentById(currentTalentId);
 
     heldendokument.talentwerte[currentTalentId]++;
     heldendokument.abenteuerpunkte.update(-1 * steigerung[currentTalent.Steigerungskosten][heldendokument.talentwerte[currentTalentId]], currentTalentId, "=>" + heldendokument.talentwerte[currentTalentId]);
@@ -80,7 +82,7 @@ var clickUpTalentHandler = function (event) {
 
 var clickDownTalentHandler = function (event) {
     var currentTalentId = event.target.id.substr(4, event.target.id.length - 4);
-    var currentTalent = talente.getTalent(currentTalentId);
+    var currentTalent = talente.getTalentById(currentTalentId);
 
     heldendokument.abenteuerpunkte.undo(currentTalentId);
     heldendokument.talentwerte[currentTalentId]--;

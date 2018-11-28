@@ -813,7 +813,7 @@ var talente =
             }
         }
     },
-    getTalent: function(searchId){
+    getTalentById: function(searchId){
         var resultTalent;
         resultTalent = talente.Gesellschaftstalente.find(function(element){return element.id == searchId;});
         if(resultTalent){return resultTalent;}
@@ -825,5 +825,14 @@ var talente =
         if(resultTalent){return resultTalent;}
         resultTalent = talente.Wissenstalente.find(function(element){return element.id == searchId;});
         if(resultTalent){return resultTalent;}
+    }, 
+    getTalentByProbe: function(probe){
+        var result = []; 
+        talente.iterateAllTalente(function(talent){
+            if(talent.Probe.includes(probe)){
+                result.push(talent);
+            }
+        });
+        return result; 
     }
 };

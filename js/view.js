@@ -98,7 +98,14 @@ var talenteView = {
         $("#value" + talent.id).text(talenteView.getTalentValueText(talent.id));
         // eslint-disable-next-line no-undef
         $("#steigerung" + talent.id).text(steigerung[talent.Steigerungskosten][heldendokument.talentwerte[talent.id]+1]);
+        $("#prob" + talent.id).text(talenteView._getProbText(calculator.calcTalentProb(talent)));
     }, 
+    updateProbs: function(eigenschaft){
+        var updatedTalente = talente.getTalentByProbe(eigenschaft);
+        updatedTalente.forEach(function(talent){
+            $("#prob" + talent.id).text(talenteView._getProbText(calculator.calcTalentProb(talent)));
+        });
+    },
     getTalentValueText: function(talentId) {
         if (heldendokument.talentwerte[talentId] == -1) {
             return "-";
@@ -138,7 +145,7 @@ var talenteView = {
             result += "<tr>" +
                 // eslint-disable-next-line no-undef
                 "<th scope=\"row\">" + talent.name + "</th>" +
-                "<td>" + talent.Probe + "</td>" +
+                "<td>" + talent.Probe + " <span id=\"prob" + talent.id + "\">" + talenteView._getProbText(calculator.calcTalentProb(talent)) + "<span></td>" +
                 "<td><strong id=\"value" + talent.id + "\">" + talenteView.getTalentValueText(talent.id) + "</strong></td>" +
                 // eslint-disable-next-line no-undef
                 "<td id=\"steigerung" + talent.id + "\">" + steigerung[talent.Steigerungskosten][0] + "</td>" +
@@ -147,6 +154,9 @@ var talenteView = {
                 "</tr>";
         }
         $("#" + gruppenname).append(result);
+    }, 
+    _getProbText: function(prob) {
+        return "(" + prob + "%)";
     }
 };
 
@@ -156,8 +166,12 @@ var calculator = {
         talent.Probe.forEach(function(eigenschaft){
             sumProb+= (heldendokument.eigenschaftswerte[eigenschaft] / 60); 
         });
-        sumProb+= (heldendokument.talentwerte[talent.id] / 60); 
-        return sumProb; 
+        if(heldendokument.talentwerte[talent.id] > 0){
+            sumProb+= (heldendokument.talentwerte[talent.id] / 60); 
+        }
+        sumProb*=100; 
+        sumProb = Math.round(sumProb);
+        return ((sumProb >= 85) ? 85 : sumProb); 
     }
 };
 
