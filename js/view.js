@@ -95,18 +95,17 @@ var talenteView = {
         talenteView._displayTalentGruppe("Handwerkstalente");
     },
     updateValue: function(talent){
-        var talentText; 
-        // eslint-disable-next-line no-undef
-        if (heldendokument.talentwerte[talent.id] == -1) {
-            talentText = "-"; 
-        } else {
-            // eslint-disable-next-line no-undef
-            talentText = heldendokument.talentwerte[talent.id]; 
-        }
-        $("#value" + talent.id).text(talentText);
+        $("#value" + talent.id).text(talenteView.getTalentValueText(talent.id));
         // eslint-disable-next-line no-undef
         $("#steigerung" + talent.id).text(steigerung[talent.Steigerungskosten][heldendokument.talentwerte[talent.id]+1]);
     }, 
+    getTalentValueText: function(talentId) {
+        if (heldendokument.talentwerte[talentId] == -1) {
+            return "-";
+        } else {
+            return heldendokument.talentwerte[talentId];
+        }
+    },
     updateActions: function () {
         // eslint-disable-next-line no-undef
         talente.iterateAllTalente(talenteView._updateButton);
@@ -140,7 +139,7 @@ var talenteView = {
                 // eslint-disable-next-line no-undef
                 "<th scope=\"row\">" + talent.name + "</th>" +
                 "<td>" + talent.Probe + "</td>" +
-                "<td><strong id=\"value" + talent.id + "\">-</strong></td>" +
+                "<td><strong id=\"value" + talent.id + "\">" + talenteView.getTalentValueText(talent.id) + "</strong></td>" +
                 // eslint-disable-next-line no-undef
                 "<td id=\"steigerung" + talent.id + "\">" + steigerung[talent.Steigerungskosten][0] + "</td>" +
                 "<td><button id=\"up" + talent.id + "\" class=\"btn btn-primary btn-sm upTalent\">&#8593;</button>" +
@@ -148,6 +147,17 @@ var talenteView = {
                 "</tr>";
         }
         $("#" + gruppenname).append(result);
+    }
+};
+
+var calculator = {
+    calcTalentProb: function(talent) {
+        var sumProb = 0; 
+        talent.Probe.forEach(function(eigenschaft){
+            sumProb+= (heldendokument.eigenschaftswerte[eigenschaft] / 60); 
+        });
+        sumProb+= (heldendokument.talentwerte[talent.id] / 60); 
+        return sumProb; 
     }
 };
 

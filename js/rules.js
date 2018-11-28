@@ -799,6 +799,10 @@ var talente =
         for(var talentGruppe in talente) {
             for(var talentIndex in talente[talentGruppe]) { 
                 talente[talentGruppe][talentIndex].id = talente[talentGruppe][talentIndex].name.replace(/\s/g, "").replace(/[^\w\s]/gi, "");
+                talente[talentGruppe][talentIndex].Probe = talente[talentGruppe][talentIndex].Probe.split("/"); 
+                talente[talentGruppe][talentIndex].Probe.__proto__.toString = function() {
+                    return this.join("/");
+                }; 
             }
         }
     },
