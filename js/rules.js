@@ -7,6 +7,72 @@ var steigerung = {
     E: [0,15,15,15,15,15,15,15,15,15,15,15,15,15,15,30,45,60,75,90,105,120,135,150,165,180],
 };
 
+var erfahrungsgrad = {
+    Unerfahren: {
+        AP: 900, 
+        MaxEigenschaft: 12,
+        MaxEigenschaftGesamt: 95,
+        MaxTalent: 10, 
+        MaxKampftechnik: 8, 
+        MaxZauber: 8, 
+        MaxFremdzauber: 0
+    },
+    Durchschnitt: {
+        AP: 1000, 
+        MaxEigenschaft: 13,
+        MaxEigenschaftGesamt: 98,
+        MaxTalent: 10, 
+        MaxKampftechnik: 10, 
+        MaxZauber: 10, 
+        MaxFremdzauber: 1
+    },
+    Erfahren: {
+        AP: 1100, 
+        MaxEigenschaft: 14,
+        MaxEigenschaftGesamt: 100,
+        MaxTalent: 10, 
+        MaxKampftechnik: 12, 
+        MaxZauber: 12, 
+        MaxFremdzauber: 2
+    },
+    Kompetent: {
+        AP: 1200, 
+        MaxEigenschaft: 15,
+        MaxEigenschaftGesamt: 102,
+        MaxTalent: 13, 
+        MaxKampftechnik: 14, 
+        MaxZauber: 14, 
+        MaxFremdzauber: 3
+    },
+    Meister: {
+        AP: 1400, 
+        MaxEigenschaft: 16,
+        MaxEigenschaftGesamt: 105,
+        MaxTalent: 16, 
+        MaxKampftechnik: 16, 
+        MaxZauber: 16, 
+        MaxFremdzauber: 4
+    },
+    Brilliant: {
+        AP: 1700, 
+        MaxEigenschaft: 17,
+        MaxEigenschaftGesamt: 109,
+        MaxTalent: 19, 
+        MaxKampftechnik: 18, 
+        MaxZauber: 18, 
+        MaxFremdzauber: 5
+    },
+    Legendaer: {
+        AP: 2100, 
+        MaxEigenschaft: 18,
+        MaxEigenschaftGesamt: 114,
+        MaxTalent: 20, 
+        MaxKampftechnik: 20, 
+        MaxZauber: 20, 
+        MaxFremdzauber: 6
+    }
+};
+
 var eigenschaften = [
     {
         name: "MU",
@@ -50,6 +116,17 @@ var eigenschaften = [
     },
 
 ];
+
+var eigenschaftenProp = {
+    isIncreasable: function(eigenschaft) {
+        // max is 25
+        return (heldendokument.eigenschaftswerte[eigenschaft.name] < 25 
+            // Kann ich mir die steigerung leisten
+            && heldendokument.abenteuerpunkte.value - steigerung.E[heldendokument.eigenschaftswerte[eigenschaft.name] + 1] >= 0
+            && heldendokument.eigenschaftswerte[eigenschaft.name] < heldendokument.maxValues.MaxEigenschaft
+            && heldendokument.getEigenschaftswerteSum()+1 <= heldendokument.maxValues.MaxEigenschaftGesamt);
+    }
+};
 
 var talente =
 {
@@ -812,6 +889,18 @@ var talente =
                 func(talente[talentGruppe][talentIndex]);
             }
         }
+    },
+    isIncreasable: function(talent) {
+        // max is 25
+        return (heldendokument.talentwerte[talent.id] < 25 
+                // maximale punkte / talent abhaengig vom Erfahrungsgrad
+                && heldendokument.talentwerte[talent.id] < heldendokument.maxValues.MaxTalent
+                // habe ich noch genug AP um die naechste Steigerung zu bezahlen
+                && heldendokument.abenteuerpunkte.value - steigerung[talent.Steigerungskosten][heldendokument.talentwerte[talent.id]+1] >= 0
+                // Talent darf maximal +2 der hoechsten benoetigten Probe sein
+                && (heldendokument.talentwerte[talent.id] < heldendokument.eigenschaftswerte[talent.Probe[0]]+2
+                || heldendokument.talentwerte[talent.id] < heldendokument.eigenschaftswerte[talent.Probe[1]]+2
+                || heldendokument.talentwerte[talent.id] < heldendokument.eigenschaftswerte[talent.Probe[2]]+2));
     },
     getTalentById: function(searchId){
         var resultTalent;

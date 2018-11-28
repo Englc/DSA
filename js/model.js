@@ -3,6 +3,7 @@
 var heldendokument = {
     eigenschaftswerte: {},
     talentwerte: {},
+    maxValues: {},
     abenteuerpunkte: {
         value: 0,
         history: [],
@@ -47,6 +48,17 @@ var heldendokument = {
             return sum; 
         }
     }, 
+    getEigenschaftswerteSum: function(){
+        var sum = 0; 
+        for(var eigenschaftswert in this.eigenschaftswerte) {
+            sum += this.eigenschaftswerte[eigenschaftswert]; 
+        }
+        return sum; 
+    },
+    applyErfahrung: function(erfahrung){
+        heldendokument.maxValues = erfahrungsgrad[erfahrung]; 
+        heldendokument.abenteuerpunkte.update(heldendokument.maxValues.AP, "start", erfahrung);
+    },
     init: function(){
         // eslint-disable-next-line no-undef
         eigenschaften.forEach(function(eigenschaft){

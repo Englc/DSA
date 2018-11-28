@@ -33,7 +33,7 @@ var eigenschaftView = {
         }
         // up
         // eslint-disable-next-line no-undef
-        if (heldendokument.eigenschaftswerte[eigenschaft.name] < 25 && heldendokument.abenteuerpunkte.value - steigerung.E[heldendokument.eigenschaftswerte[eigenschaft.name] + 1] >= 0) {
+        if (eigenschaftenProp.isIncreasable(eigenschaft)) {
             $("#up" + eigenschaft.name).removeAttr("disabled").button("refresh");
         } else {
             $("#up" + eigenschaft.name).attr("disabled", "disabled").button("refresh");
@@ -101,15 +101,18 @@ var talenteView = {
         $("#prob" + talent.id).text(talenteView._getProbText(calculator.calcTalentProb(talent)));
     }, 
     updateProbs: function(eigenschaft){
+        // eslint-disable-next-line no-undef
         var updatedTalente = talente.getTalentByProbe(eigenschaft);
         updatedTalente.forEach(function(talent){
             $("#prob" + talent.id).text(talenteView._getProbText(calculator.calcTalentProb(talent)));
         });
     },
     getTalentValueText: function(talentId) {
+        // eslint-disable-next-line no-undef
         if (heldendokument.talentwerte[talentId] == -1) {
             return "-";
         } else {
+            // eslint-disable-next-line no-undef
             return heldendokument.talentwerte[talentId];
         }
     },
@@ -127,7 +130,7 @@ var talenteView = {
         }
         // up
         // eslint-disable-next-line no-undef
-        if (heldendokument.talentwerte[talent.id] < 25 && heldendokument.abenteuerpunkte.value - steigerung[talent.Steigerungskosten][heldendokument.talentwerte[talent.id]+1] >= 0) {
+        if (talente.isIncreasable(talent)) {
             $("#up" + talent.id).removeAttr("disabled").button("refresh");
         } else {
             $("#up" + talent.id).attr("disabled", "disabled").button("refresh");
@@ -164,9 +167,12 @@ var calculator = {
     calcTalentProb: function(talent) {
         var sumProb = 0; 
         talent.Probe.forEach(function(eigenschaft){
+            // eslint-disable-next-line no-undef
             sumProb+= (heldendokument.eigenschaftswerte[eigenschaft] / 60); 
         });
+        // eslint-disable-next-line no-undef
         if(heldendokument.talentwerte[talent.id] > 0){
+            // eslint-disable-next-line no-undef
             sumProb+= (heldendokument.talentwerte[talent.id] / 60); 
         }
         sumProb*=100; 
@@ -193,8 +199,11 @@ var abenteuerpunkteView = {
             }
         }, this);
         result+="<hr>";
+        // eslint-disable-next-line no-undef
         result+= "<p><strong>AP Gesamt: </strong>" + heldendokument.abenteuerpunkte.getEarnSum() + " AP</p>";
+        // eslint-disable-next-line no-undef
         result+= "<p><strong>Ausgegeben: </strong>" + heldendokument.abenteuerpunkte.getPaySum() + " AP</p>";
+        // eslint-disable-next-line no-undef
         result+= "<p><strong>Aktuell: </strong>" + heldendokument.abenteuerpunkte.value + " AP</p>";
         $("#verlaufContent").html(result);
     }
