@@ -208,3 +208,11 @@ var abenteuerpunkteView = {
         $("#verlaufContent").html(result);
     }
 };
+
+var statsView = {
+    updateValues: function() {
+        for(var stat in heldendokument.stats){
+            $("#Max"+stat).text(heldendokument.stats[stat]);
+        }
+    }
+};

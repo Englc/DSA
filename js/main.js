@@ -4,6 +4,7 @@ $(document).ready(function () {
     heldendokument.init();
 
     heldendokument.applyErfahrung($("input[name=erfahrung]:checked")[0].id); 
+    heldendokument.applySpezies($("input[name=spezies]:checked")[0].id); 
     eigenschaftView.displayEigenschaften();
     talenteView.displayTalente();
     abenteuerpunkteView.updateValue();
@@ -13,6 +14,7 @@ $(document).ready(function () {
     $(".upTalent").on("click", clickUpTalentHandler);
     $(".downTalent").on("click", clickDownTalentHandler);
     $(".btnErfahrung").on("change", toggleErfahrungHandler);
+    $(".btnSpezies").on("change", toggleSpeziesHandler);
 
 });
 
@@ -23,11 +25,19 @@ var toggleErfahrungHandler = function (){
     abenteuerpunkteView.updateValue(); 
 }; 
 
+var toggleSpeziesHandler = function(){
+    heldendokument.abenteuerpunkte.undo("Spezies"); 
+    heldendokument.applySpezies($("input[name=spezies]:checked")[0].id); 
+
+    abenteuerpunkteView.updateValue(); 
+};
+
 var clickUpHandler = function (event) {
     var currentEigenschaft = event.target.id.substr(2, 2);
     heldendokument.eigenschaftswerte[currentEigenschaft]++;
     heldendokument.abenteuerpunkte.update(-1 * steigerung.E[heldendokument.eigenschaftswerte[currentEigenschaft]], currentEigenschaft, "=>" + heldendokument.eigenschaftswerte[currentEigenschaft]);
-
+    
+    heldendokument.applySpezies($("input[name=spezies]:checked")[0].id); 
     eigenschaftView.updateValue(currentEigenschaft);
     abenteuerpunkteView.updateValue();
     talenteView.updateProbs(currentEigenschaft);
@@ -38,6 +48,7 @@ var clickDownHandler = function (event) {
     heldendokument.abenteuerpunkte.undo(currentEigenschaft);
     heldendokument.eigenschaftswerte[currentEigenschaft]--;
 
+    heldendokument.applySpezies($("input[name=spezies]:checked")[0].id); 
     eigenschaftView.updateValue(currentEigenschaft);
     abenteuerpunkteView.updateValue();
     talenteView.updateProbs(currentEigenschaft);

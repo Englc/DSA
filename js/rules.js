@@ -43,7 +43,7 @@ var spezies = {
         Geschwindigkeit: 6, 
         Vorteile: []
     }
-}
+};
 
 var erfahrungsgrad = {
     Unerfahren: {
