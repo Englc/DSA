@@ -20,7 +20,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h4>Abenteuerpunkte (AP): <span id="AP"></span>
+                <h4>Abenteuerpunkte (AP):
+                    <span id="AP"></span>
                     <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#history">
                         Verlauf
                     </button>
@@ -42,8 +43,7 @@
             </div>
             <div class="col-12 btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-success btn-sm active">
-                    <input type="radio" name="erfahrung" id="Unerfahren" class="btnErfahrung" autocomplete="off" checked>
-                    Unerfahren
+                    <input type="radio" name="erfahrung" id="Unerfahren" class="btnErfahrung" autocomplete="off" checked> Unerfahren
                 </label>
                 <!-- <label class="btn btn-success btn-sm">
                     <input type="radio" name="erfahrung" id="Durchschnitt" class="btnErfahrung" autocomplete="off"> Durchschnitt
@@ -66,6 +66,69 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-12 btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-success btn-sm active">
+                    <input type="radio" name="spezies" id="Mensch" class="btnSpezies" autocomplete="off" checked> Mensch
+                </label>
+                <label class="btn btn-success btn-sm">
+                    <input type="radio" name="spezies" id="Halbelf" class="btnSpezies" autocomplete="off"> Halbelf
+                </label>
+                <label class="btn btn-success btn-sm">
+                    <input type="radio" name="spezies" id="Elf" class="btnSpezies" autocomplete="off"> Elf
+                </label>
+                <label class="btn btn-success btn-sm">
+                    <input type="radio" name="spezies" id="Zwerg" class="btnSpezies" autocomplete="off"> Zwerg
+                </label>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="card">
+                    <div class="card-body py-0">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Wert</th>
+                                    <th scope="col">Max</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Lebensenergie</th>
+                                    <td>0</td>
+                                    <td>28</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Astralenergie</th>
+                                    <td>0</td>
+                                    <td>28</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Karmaenergie</th>
+                                    <td>0</td>
+                                    <td>28</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Seelenkraft</th>
+                                    <td>0</td>
+                                    <td>28</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Zähigkeit</th>
+                                    <td>0</td>
+                                    <td>28</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Ausweichen</th>
+                                    <td>0</td>
+                                    <td>28</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-12 col-lg-6">
                 <div id="EigenschaftenCol1" class="row"></div>
             </div>
@@ -79,15 +142,14 @@
                     <div class="card">
                         <div class="card-header" id="headingKörpertalente">
                             <h5 class="mb-0">
-                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseKörpertalente"
-                                    aria-expanded="true" aria-controls="collapseKörpertalente">
+                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseKörpertalente" aria-expanded="true"
+                                    aria-controls="collapseKörpertalente">
                                     <strong>Körpertalente</strong>
                                 </button>
                             </h5>
                         </div>
 
-                        <div id="collapseKörpertalente" class="collapse show" aria-labelledby="headingKörpertalente"
-                            data-parent="#leftTalente">
+                        <div id="collapseKörpertalente" class="collapse show" aria-labelledby="headingKörpertalente" data-parent="#leftTalente">
                             <div class="card-body p-0">
                                 <div class="col-12">
                                     <table class="table table-sm">
@@ -110,15 +172,14 @@
                     <div class="card">
                         <div class="card-header" id="headingGesellschaftstalente">
                             <h5 class="mb-0">
-                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseGesellschaftstalente"
-                                    aria-expanded="true" aria-controls="collapseGesellschaftstalente">
+                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseGesellschaftstalente" aria-expanded="true"
+                                    aria-controls="collapseGesellschaftstalente">
                                     <strong>Gesellschaftstalente</strong>
                                 </button>
                             </h5>
                         </div>
 
-                        <div id="collapseGesellschaftstalente" class="collapse" aria-labelledby="headingGesellschaftstalente"
-                            data-parent="#leftTalente">
+                        <div id="collapseGesellschaftstalente" class="collapse" aria-labelledby="headingGesellschaftstalente" data-parent="#leftTalente">
                             <div class="card-body p-0">
                                 <div class="col-12">
                                     <table class="table table-sm">
@@ -141,15 +202,14 @@
                     <div class="card">
                         <div class="card-header" id="headingNaturtalente">
                             <h5 class="mb-0">
-                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseNaturtalente"
-                                    aria-expanded="true" aria-controls="collapseNaturtalente">
+                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseNaturtalente" aria-expanded="true"
+                                    aria-controls="collapseNaturtalente">
                                     <strong>Naturtalente</strong>
                                 </button>
                             </h5>
                         </div>
 
-                        <div id="collapseNaturtalente" class="collapse" aria-labelledby="headingNaturtalente"
-                            data-parent="#leftTalente">
+                        <div id="collapseNaturtalente" class="collapse" aria-labelledby="headingNaturtalente" data-parent="#leftTalente">
                             <div class="card-body p-0">
                                 <div class="col-12">
                                     <table class="table table-sm">
@@ -177,15 +237,14 @@
                     <div class="card">
                         <div class="card-header" id="headingWissenstalente">
                             <h5 class="mb-0">
-                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseWissenstalente"
-                                    aria-expanded="true" aria-controls="collapseWissenstalente">
+                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseWissenstalente" aria-expanded="true"
+                                    aria-controls="collapseWissenstalente">
                                     <strong>Wissenstalente</strong>
                                 </button>
                             </h5>
                         </div>
 
-                        <div id="collapseWissenstalente" class="collapse show" aria-labelledby="headingWissenstalente"
-                            data-parent="#rightTalente">
+                        <div id="collapseWissenstalente" class="collapse show" aria-labelledby="headingWissenstalente" data-parent="#rightTalente">
                             <div class="card-body p-0">
                                 <div class="col-12">
                                     <table class="table table-sm">
@@ -208,15 +267,14 @@
                     <div class="card">
                         <div class="card-header" id="headingHandwerkstalente">
                             <h5 class="mb-0">
-                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseHandwerkstalente"
-                                    aria-expanded="true" aria-controls="collapseHandwerkstalente">
+                                <button class="btn btn-link no-style" type="button" data-toggle="collapse" data-target="#collapseHandwerkstalente" aria-expanded="true"
+                                    aria-controls="collapseHandwerkstalente">
                                     <strong>Handwerkstalente</strong>
                                 </button>
                             </h5>
                         </div>
 
-                        <div id="collapseHandwerkstalente" class="collapse" aria-labelledby="headingHandwerkstalente"
-                            data-parent="#rightTalente">
+                        <div id="collapseHandwerkstalente" class="collapse" aria-labelledby="headingHandwerkstalente" data-parent="#rightTalente">
                             <div class="card-body p-0">
                                 <div class="col-12">
                                     <table class="table table-sm">

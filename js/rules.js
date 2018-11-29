@@ -7,6 +7,44 @@ var steigerung = {
     E: [0,15,15,15,15,15,15,15,15,15,15,15,15,15,15,30,45,60,75,90,105,120,135,150,165,180],
 };
 
+var spezies = {
+    Elf: {
+        AP: 18, 
+        Lebensenergie: 2, 
+        Seelenkraft: -4, 
+        Zähigkeit: -6,
+        Geschwindigkeit: 8, 
+        Vorteile: [
+            "Zauberer", 
+            "Zweistimmiger Gesang"
+        ]
+    },
+    Halbelf: {
+        AP: 0, 
+        Lebensenergie: 5, 
+        Seelenkraft: -4, 
+        Zähigkeit: -6,
+        Geschwindigkeit: 8, 
+        Vorteile: []
+    }, 
+    Mensch: {
+        AP: 0, 
+        Lebensenergie: 5, 
+        Seelenkraft: -5, 
+        Zähigkeit: -5,
+        Geschwindigkeit: 8, 
+        Vorteile: []
+    },
+    Zwerg: {
+        AP: 61, 
+        Lebensenergie: 8, 
+        Seelenkraft: -4, 
+        Zähigkeit: -4,
+        Geschwindigkeit: 6, 
+        Vorteile: []
+    }
+}
+
 var erfahrungsgrad = {
     Unerfahren: {
         AP: 900, 
