@@ -3,35 +3,41 @@
 Todo: 
 
 - Einstiegsseite, Button "Neues Heldendokument"/"Heldendokument Laden", Auswahl Erfahrungsgrad
-- download as File
-- load local file
-- load preconfigured charakter 
-- tile mit name, geschlecht, geburtsdatum, alter, Haarfarbe, Augenfarbe, Größe/gewicht, Sozialstatus, Geburtsort, Familie, Charakteristika
+- ~~Erfahrungsgrad~~
+- name, geschlecht, geburtsdatum, alter, Haarfarbe, Augenfarbe, Größe/gewicht, Sozialstatus, Geburtsort, Familie, Charakteristika
+- Schicksalspunkte
+- ~~Spezies~~
+- ~~Grundwerte~~
+- Kultur
+- Sprachen / Schriften
+- ~~Eigenschaften~~
 - Profession
+- Vor- und Nachteile
+- Sonderfertigkeiten
+- ~~Talente~~
 - Kampftechniken
 - Kampffertigkeiten
-- guided activity process
-- nav bar mit menü
-- zauber und liturgien 
-- Vor- und Nachteile
-- Schicksalspunkte
-- Änderung nach den Laden / Spielmodus
-- Sonderfertigkeiten
-- Notizen
-- Qualitätsstufen Info
-- Sprachen / Schriften
 - Nahkampfwaffen
 - Fernkampfwaffen
 - Rüstungen
 - Schild / Parierwaffe
-- Default Ausrüstung
-- Zustand: Belastung, Betäubung, Entrückt, Furcht, Paralyse, Schmerz, Verwirrung (erst bei Änderung)
+- zauber und liturgien 
 - Ausrüstung / Tasche
-- Tierbogen
-- Style
+- Default Ausrüstung
+- download as File
+- load local file
+- load preconfigured charakter 
 - Speichern im Browser-Cache
-- Infos für Talente
+- guided activity process
+- nav bar mit menü
+- Änderung nach den Laden / Spielmodus
 - Abenteuer Abschluss (neue AP)
+- Zustand: Belastung, Betäubung, Entrückt, Furcht, Paralyse, Schmerz, Verwirrung (erst bei Änderung)
+- Notizen
+- Tierbogen
+- Qualitätsstufen Info
+- Style
+- Infos für Talente
 - Hilfe Texte für Steigerungsgrenzen
 
 Refactoring: 
