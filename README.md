@@ -2,12 +2,12 @@
 
 Todo: 
 
-- Einstiegsseite, Button "Neues Heldendokument", Auswahl Erfahrungsgrad
-- Seitenstruktur statisch ausliefern
-- download Json-file
-- load existing json-file
-- Set/change methoden im Model, die den Update im View triggern => Klassen mit Methoden, Model nutzt diese Klassen 
+- Einstiegsseite, Button "Neues Heldendokument"/"Heldendokument Laden", Auswahl Erfahrungsgrad
+- download as File
+- load local file
+- load preconfigured charakter 
 - tile mit name, geschlecht, geburtsdatum, alter, Haarfarbe, Augenfarbe, Größe/gewicht, Sozialstatus, Geburtsort, Familie, Charakteristika
+- Profession
 - Kampftechniken
 - Kampffertigkeiten
 - guided activity process
@@ -28,9 +28,18 @@ Todo:
 - Zustand: Belastung, Betäubung, Entrückt, Furcht, Paralyse, Schmerz, Verwirrung (erst bei Änderung)
 - Ausrüstung / Tasche
 - Tierbogen
+- Style
+- Speichern im Browser-Cache
+- Infos für Talente
+- Abenteuer Abschluss (neue AP)
+- Hilfe Texte für Steigerungsgrenzen
 
+Refactoring: 
 
-
+- Controller -> Model -> View -> Controller
+- HTML Content weitestgehend statisch ausliefern
+- Seite on demand nachladen / guided activity
+- Wenn Viewport Size < lg => zu einem Accordeon zusammenfügen
 
 Anlage/Änderung: 
 zusätzlich zu MU/GE/FF erfolgschance (e.g. MU/GE/FF (60%))
